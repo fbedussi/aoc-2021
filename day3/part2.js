@@ -23,4 +23,6 @@ function calculate(data, comparingFn) {
 }
 const oxygen = calculate(data, (zeroes, ones) => zeroes.length === ones.length || ones.length > zeroes.length ?  ones : zeroes)
 const co2 = calculate(data, (zeroes, ones) => zeroes.length === ones.length || ones.length > zeroes.length ?  zeroes : ones)
+console.log(oxygen, co2)
 console.log('result', parseInt(oxygen[0], 2) * parseInt(co2[0], 2))
+//1370737
