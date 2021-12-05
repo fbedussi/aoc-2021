@@ -1,4 +1,5 @@
 const fs = require('fs')
+console.time('a')
 
 const inputTxt = fs.readFileSync('./input.txt', 'UTF-8')
 const lines = inputTxt.split(/\r?\n/);
@@ -57,5 +58,7 @@ while (!won && numbersIndex < numbers.length) {
   }
   numbersIndex++
 }
+console.timeEnd('a')
+
 // console.log('tables', boards)
 
