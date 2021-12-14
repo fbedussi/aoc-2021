@@ -11,6 +11,8 @@ function isValid(a,b, b1, visited) {
 
 function nextStep(currentSegment, currentPosition, segments, visited) {
   visited.push(currentSegment[currentPosition])
+
+
   // console.log(visited)
   const nextSegments = segments.filter(([a, b]) => isValid(a,b,currentSegment[currentPosition], visited) || isValid(b,a,currentSegment[currentPosition], visited))
   nextSegments.forEach(segment => {
@@ -20,8 +22,11 @@ function nextStep(currentSegment, currentPosition, segments, visited) {
     }
     if (segment[position] === 'end') {
       paths++
+      console.log(visited.join('-'),'-end')
       return
     }
+    // visited.push(segment[position])
+
     return nextStep(segment, segment[0] === currentSegment[currentPosition]  ? 1 : 0, segments, visited)
   })
 }
