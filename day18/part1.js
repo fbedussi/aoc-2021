@@ -28,8 +28,10 @@ const reduce = (number) => {
     const head = number.substring(0,index - 1)
     const remaining = number.substring(index - 1)
     number = remaining.replace(/(\[(\d+),(\d+)\])(.*)/, (match, explodingGroup, explodingGroupLeftNumber, explodingGroupRightNumber, tail) => {
-      const newHead = head.replace(/(.*)(\d)(.*)/, (match, head, number, tail) => {
-        return `${head}${Number(number)+Number(explodingGroupLeftNumber)}${tail}`
+      const newHead = head.split('').reverse().join('').replace(/(.*)(\d{1,4})(.*)/, (match, head, number, tail) => {
+        const result = `${head}${(Number(number.split('').reverse().join(''))+Number(explodingGroupLeftNumber)).toString().split('').reverse().join('')}${tail}`.split('').reverse().join('')
+        console.log(result)
+        return result
       })
       const newTail = tail?.replace(/([^\d]*)(\d+)(.*)/, (match, head, number, tail) => {
         return `${head}${Number(number) + Number(explodingGroupRightNumber)}${tail}`
